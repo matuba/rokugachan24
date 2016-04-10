@@ -1,4 +1,5 @@
 name := """rokugachan24"""
+herokuAppName in Compile := "lit-springs-45959"
 
 version := "1.0-SNAPSHOT"
 
