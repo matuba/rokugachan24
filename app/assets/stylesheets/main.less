@@ -1,0 +1,331 @@
+body { padding-top: 70px; }
+
+#config-window
+{
+    width: 800px;
+}
+#reservation-window
+{
+    width: 800px;
+}
+#reserve-channel
+{
+  cursor: default;
+}
+#reserve-desc
+{
+  cursor: default;
+}
+
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
+div#floating-left {
+  position: fixed;
+  top: 4px;
+  left: 3px;
+  border: 0px solid #000000;
+  border-radius: 10px; /* 角を丸める */
+  background: rgba(0, 0, 0, 0.0); /* 背景色を白に指定して不透明度を0.5に指定 */
+  width: 100%;
+  z-index: 9999;
+}
+div#floating-right {
+  position: fixed;
+  top: 10px;
+  left: -30px;
+  text-align:right;
+  border: 0px solid #000000;
+  border-radius: 10px; /* 角を丸める */
+  background: rgba(0, 0, 0, 0.0); /* 背景色を白に指定して不透明度を0.5に指定 */
+  width: 100%;
+  z-index: 9999;
+}
+
+div#floating-date {
+  font-size: 12px;
+  color: #ffffff;
+  position: fixed;
+  top: 10px;
+  left: 30px;
+  text-align:left;
+  border: 0px solid #000000;
+  border-radius: 10px; /* 角を丸める */
+  background: rgba(0, 0, 0, 0.0); /* 背景色を白に指定して不透明度を0.5に指定 */
+  width: 100%;
+  z-index: 9999;
+}
+
+div.tvlisting{
+  border-collapse:collapse;
+  border-spacing: 0px;
+  padding: 0px;
+  margin: 0px;
+  border: solid 0px #bdc3c7;
+  line-height: 100%;
+}
+
+table.tvlistingTime{
+  border-color:#bdc3c7;
+}
+table.tvlisting {
+  border: solid 0px #bdc3c7;
+}
+
+tr.tvlisting{
+}
+
+.td_base{
+  color: #ffffff;
+  border-collapse:collapse;
+  border-spacing: 0px;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  line-height: 100%;
+}
+
+@anime_color: #816907;
+@anime_color_bottom: #816907;
+@cinema_color: #4c245e;
+@cinema_color_bottom: #7f3d9d;
+@news_color: #53768d;
+@news_color_bottom: #8bc5ec;
+@information_color: #465660;
+@information_color_bottom: #7690a1;
+@variety_color: #4d8665;
+@variety_color_bottom: #81e0a9;
+@drama_color: #893d58;
+@drama_color_bottom: #e56693;
+@sports_color: #4c5454;
+@sports_color_bottom: #7f8c8d;
+@music_color: #006860;
+@music_color_bottom: #66a49f;
+@etc_color: #8a4b14;
+@etc_color_bottom: #e67e22;
+
+a.anime{
+  color: @anime_color;
+}
+
+
+td.anime{
+  &:extend(.td_base all);
+  background: linear-gradient(@anime_color,@anime_color_bottom);
+}
+td.cinema{
+  &:extend(.td_base all);
+  background: linear-gradient(@cinema_color,@cinema_color_bottom);
+}
+td.news{
+  &:extend(.td_base all);
+  background: linear-gradient(@news_color,@news_color_bottom);
+}
+td.information{
+  &:extend(.td_base all);
+  background: linear-gradient(@information_color,@information_color_bottom);
+}
+td.variety{
+  &:extend(.td_base all);
+  background: linear-gradient(@variety_color,@variety_color_bottom);
+}
+td.drama{
+  &:extend(.td_base all);
+	background: linear-gradient(@drama_color,@drama_color_bottom);
+}
+td.sports{
+  &:extend(.td_base all);
+  background: linear-gradient(@sports_color,@sports_color_bottom);
+}
+td.music{
+  &:extend(.td_base all);
+  background: linear-gradient(@music_color,@music_color_bottom);
+}
+td.etc{
+  &:extend(.td_base all);
+  background: linear-gradient(@etc_color,@etc_color_bottom);
+}
+
+td.loading{
+  &:extend(.td_base all);
+	background-image: url("../images/loading.gif");
+	background-repeat:no-repeat;
+  background-position: center center;
+}
+
+
+td.timebetween01{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#685999;
+}
+td.timebetween02{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#685999;
+}
+td.timebetween03{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#685999;
+}
+td.timebetween04{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#685999;
+}
+td.timebetween05{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#685999;
+}
+td.timebetween06{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#E19F23;
+}
+td.timebetween07{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#E19F23;
+}
+td.timebetween08{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#E19F23;
+}
+td.timebetween09{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#E19F23;
+}
+td.timebetween10{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#E19F23;
+}
+td.timebetween11{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#E19F23;
+}
+td.timebetween12{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#E19F23;
+}
+td.timebetween13{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#E19F23;
+}
+td.timebetween14{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#E19F23;
+}
+td.timebetween15{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#E19F23;
+}
+td.timebetween16{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#E19F23;
+}
+td.timebetween17{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#E19F23;
+}
+td.timebetween18{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#685999;
+}
+td.timebetween19{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#685999;
+}
+td.timebetween20{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#685999;
+}
+td.timebetween21{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#685999;
+}
+td.timebetween22{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#685999;
+}
+td.timebetween23{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#685999;
+}
+td.timebetween00{
+	text-align:center;
+	vertical-align:middle;
+	color: white;
+	background-color:#685999;
+}
+
+.marquee {
+	width: 700px;
+	overflow: hidden;
+	border:none;
+	color: palegreen;
+}
+
+table.channelname {
+	margin:0;
+	padding:0;
+	border:0;
+	width: 140px;
+	float: left;
+	td{
+		padding:0;
+		border:0;
+		text-align:center;
+		font-size:x-small;
+		color:white;
+		padding:0;
+		table-layout:fixed;
+	}
+}
