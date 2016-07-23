@@ -1,6 +1,7 @@
 package controllers
 
 import javax.inject.Inject
+import java.sql.Timestamp
 
 import play.api.Play.current
 import play.api._
@@ -25,7 +26,7 @@ class Application @Inject() ( reservationRepo: ReservationRepo) extends Controll
     Ok(views.html.tvlistings.render())
   }
   def testListings = Action {
-    reservationRepo.create("")
+    reservationRepo.create(0, new Timestamp(System.currentTimeMillis()), 0, "", "", "")
     Ok(views.html.tvlistingsTest.render())
   }
 
@@ -60,10 +61,13 @@ class Application @Inject() ( reservationRepo: ReservationRepo) extends Controll
   }
   def reservationProgramme(year:String, monthOfYear:String, dayOfMonth:String, hourOfDay:String, minuteOfHour:String, length:String, broadcast:String, ch:String) = Action{
 //    val litings = new TVListings("public/listings/" + ch + ".xml")
-//    val start = new DateTime(year.toInt, monthOfYear.toInt, dayOfMonth.toInt, hourOfDay.toInt, minuteOfHour.toInt)
+    val start = Calendar.getInstance(TimeZone.getDefault())
+    start.set(year.toInt, monthOfYear.toInt, dayOfMonth.toInt, hourOfDay.toInt, minuteOfHour.toInt, 0)
+//    val start = new Date(year.toInt, monthOfYear.toInt, dayOfMonth.toInt, hourOfDay.toInt, minuteOfHour.toInt, 0)
 //    val stop = start.plusMinutes(length.toInt)
 //    var programmeList:Seq[JsValue] = litings.programmeList(start, stop)
 //    Ok(Json.toJson(programmeList))
+    reservationRepo.create(0, new Timestamp(start.getTimeInMillis), length.toLong, broadcast, ch, "")
 
     var outString = "Number is "
 //    val conn = DB.getConnection()

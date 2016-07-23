@@ -10,11 +10,10 @@ import scala.concurrent.Future
 
 import slick.driver.PostgresDriver.api._
 import java.sql.Timestamp
-import java.sql.Date
 
 case class Reservation(
   id:Long,
-  start:Date,
+  start:Timestamp,
   length:Long,
   broadcast:String,
   ch:String,
@@ -22,20 +21,26 @@ case class Reservation(
   created:Timestamp = new Timestamp(System.currentTimeMillis()),
   updated:Timestamp = new Timestamp(System.currentTimeMillis())
 )
+
+
 class ReservationRepo @Inject()(protected val dbConfigProvider: DatabaseConfigProvider) {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
   val db = dbConfig.db
   import dbConfig.driver.api._
   private val Reservations = TableQuery[ReservationTable]
 
-  def create(name: String): Future[Long] = {
-    val reservation = Reservation(0, new Date(System.currentTimeMillis()), 0, "", "", "", new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()))
+  def all(): DBIO[Seq[Reservation]] =
+    Reservations.result
+
+  def create(id:Long, start:Timestamp, length:Long, broadcast:String, ch:String, tvTuner:String): Future[Long] = {
+    val createTime = new Timestamp(System.currentTimeMillis())
+    val reservation = Reservation(id, start, length, broadcast, ch, tvTuner, createTime, createTime)
     db.run(Reservations returning Reservations.map(_.id) += reservation)
   }
 
   private class ReservationTable(tag: Tag) extends Table[Reservation](tag, "RESERVATION") {
     def id = column[Long]("ID", O.AutoInc, O.PrimaryKey)
-    def start = column[Date]("START")
+    def start = column[Timestamp]("START")
     def length = column[Long]("LENGTH")
     def broadcast = column[String]("BROADCAST")
     def ch = column[String]("CHANNEL")
